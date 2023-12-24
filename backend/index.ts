@@ -11,13 +11,31 @@ const port: number = 3000;
 app.use(router);
 
 router.get("/", async function (req: Request, res: Response): Promise<void> {
-    const getProjects = await getDatabase(process.env.NOTION_DATABASE)
-    const results = getAllDatabaseRows(getProjects);
-    console.log("results", results);
-
-    res.send("Hello world");
+    try {
+        res.send({ message: "Hello world" });
+    } catch {
+        res.status(500).send({
+            message: "Internal Server Error",
+        });
+    }
 });
 
+router.get(
+    "/projects",
+    async function (req: Request, res: Response): Promise<void> {
+        try {
+            const getProjects = await getDatabase(
+                process.env.NOTION_DATABASE_PROJECTS
+            );
+            const data = getAllDatabaseRows(getProjects);
+            res.send(data);
+        } catch {
+            res.status(500).send({
+                message: "Internal Server Error",
+            });
+        }
+    }
+);
 app.listen(port, () => {
     console.log(`Server Running here 👉 http://localhost:${port}`);
 });
