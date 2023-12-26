@@ -7,3 +7,5 @@ type Project = {
     year: number;
     repoLink: string;
 };
+
+export default Project;

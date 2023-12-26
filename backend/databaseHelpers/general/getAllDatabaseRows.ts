@@ -1,7 +1,10 @@
+import { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
 import extractProperty from "./extractProperty";
 
 // gets all the database rows and returns them as an array of objects
-export default function getAllDatabaseRows(databaseResults: any) {
+export default function getAllDatabaseRows(
+    databaseResults: QueryDatabaseResponse | null
+) {
     try {
         let res: any[] = [];
         databaseResults?.results.forEach((result: any) => {
