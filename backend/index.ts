@@ -45,6 +45,47 @@ router.get(
         }
     }
 );
+
+router.get(
+    "/projects",
+    async function (req: Request, res: Response): Promise<any> {
+        try {
+            res.set("Access-Control-Allow-Origin", "*");
+
+            const getProjects = await getDatabase(
+                process.env.NOTION_DATABASE_PROJECTS
+            );
+            const data = getAllDatabaseRows(getProjects);
+            res.send(data);
+        } catch {
+            console.log("GG");
+            res.status(500).send({
+                message: "Internal Server Error",
+            });
+        }
+    }
+);
+
+router.get(
+    "/experiences",
+    async function (req: Request, res: Response): Promise<any> {
+        try {
+            res.set("Access-Control-Allow-Origin", "*");
+            const getProjects = await getDatabase(
+                process.env.NOTION_DATABASE_EXPERIENCES
+            );
+            const data = getAllDatabaseRows(getProjects);
+            res.send(data);
+        } catch {
+            console.log("GG");
+            res.status(500).send({
+                message: "Internal Server Error",
+            });
+        }
+    }
+);
+
+
 app.listen(port, () => {
     console.log(`Server Running here 👉 http://localhost:${port}`);
 });

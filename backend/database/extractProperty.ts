@@ -11,6 +11,8 @@ export default function extractProperty(property: any) {
                 return property.multi_select;
             case "number":
                 return property.number;
+            case "date":
+                return property.date.start;
             default:
                 return null;
         }
