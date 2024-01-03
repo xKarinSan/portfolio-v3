@@ -1,21 +1,22 @@
-import { useEffect } from "react";
 import "./App.css";
-import axios from "axios";
+import Navbar from "@/components/general/Navbar";
+import HeroPortion from "./components/landing/HeroPortion";
+import AboutMePortion from "./components/landing/AboutMePortion";
+import SkillSetPortion from "./components/landing/SkillsetPortion";
+import ProjectsPortion from "./components/landing/ProjectsPortion";
+import ContactMePortion from "./components/landing/ContactMePortion";
 
 function App() {
-    const getProjects = async () => {
-        try {
-            const projects = await axios.get("http://localhost:3000/projects");
-            console.info("projects", projects.data);
-        } catch (err) {
-            console.log("err", err);
-        }
-    };
-    useEffect(() => {
-        getProjects();
-    }, []);
-
-    return <></>;
+    return (
+        <>
+            <Navbar />
+            <HeroPortion />
+            <AboutMePortion />
+            <SkillSetPortion />
+            <ProjectsPortion />
+            <ContactMePortion />
+        </>
+    );
 }
 
 export default App;
