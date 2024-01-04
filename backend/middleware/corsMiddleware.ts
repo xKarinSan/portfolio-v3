@@ -5,6 +5,5 @@ export default function corsMiddleware(
     next: NextFunction
 ): void {
     res.set("Access-Control-Allow-Origin", "*");
-    console.log("LOL")
     next();
 }

@@ -17,7 +17,8 @@ export default function ProjectCard({ project }: { project: any }) {
         <Card
             color="black"
             height={["350px", null, "400px", "500px"]}
-            width={["80%", null, "40%"]}
+            // width={["60%", null, "40%"]}
+            width={["80%"]}
             margin="20px auto"
             backgroundImage={`url(${flipped ? "" : imageUrl})`}
             backgroundSize={"cover"}
@@ -34,8 +35,7 @@ export default function ProjectCard({ project }: { project: any }) {
                     <Heading fontWeight={"normal"} fontSize={"24px"}>
                         {name} ({year})
                         {projectType.map((type: any) => {
-                            const { name, color } = type;
-                            console.log("color", color.toString(16));
+                            const { name } = type;
                             return (
                                 <Badge
                                     background={"#a32a2a"}
@@ -68,7 +68,7 @@ export default function ProjectCard({ project }: { project: any }) {
                         Tech Stacks
                     </Heading>
                     {techStacks.map((tech: any) => {
-                        const { name, color } = tech;
+                        const { name } = tech;
                         return (
                             <Badge
                                 background={"#cc7a37"}

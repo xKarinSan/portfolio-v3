@@ -18,8 +18,8 @@ export default function SkillSetPortion() {
             width={["80%", null, "60%"]}
         >
             <Heading fontSize={28}>My Skillsets</Heading>
-            <Box padding="20px auto" width={["80%","60%"]} margin="auto">
-                <SimpleGrid columns={[3,4]} gap={1} margin="auto">
+            <Box padding="20px auto" width={["80%", "60%"]} margin="auto">
+                <SimpleGrid columns={[3, 4]} gap={1} margin="auto">
                     {skillsets
                         .filter((skillset: any) => {
                             return skillset.toFeature === true;
@@ -27,11 +27,7 @@ export default function SkillSetPortion() {
                         .map((skillset: any) => {
                             const { name, logoUrl } = skillset;
                             return (
-                                <Image
-                                    src={logoUrl}
-                                    alt={name}
-                                    margin="30px auto"
-                                />
+                                <Image src={logoUrl} alt={name} margin="auto" />
                             );
                         })}
                 </SimpleGrid>

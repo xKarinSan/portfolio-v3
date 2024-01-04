@@ -1,5 +1,13 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
 import ProjectCard from "./cards/ProjectCard";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "../ui/carousel";
+
 export default function ProjectsPortion() {
     const projects = [
         {
@@ -244,21 +252,32 @@ export default function ProjectsPortion() {
         },
     ];
     return (
-        <Box padding="10px">
+        <Box margin="auto" width={["80%"]}>
             <Heading fontSize={28}>My Projects</Heading>
             <Text>
                 Here are the projects I’ve worked on. Click here to see more
             </Text>
-            <>
-                {projects
-                    .filter((project) => project.toFeature)
-                    .map((project) => {
-                        console.log("project", project);
-                        return (
-                            <ProjectCard key={project.id} project={project} />
-                        );
-                    })}
-            </>
+            <Carousel>
+                <CarouselPrevious />
+                <CarouselContent>
+                    <>
+                        {projects
+                            .filter((project) => project.toFeature)
+                            .map((project) => {
+                                return (
+                                    <CarouselItem>
+                                        <ProjectCard
+                                            key={project.id}
+                                            project={project}
+                                        />
+                                    </CarouselItem>
+                                );
+                            })}
+                    </>
+                </CarouselContent>
+
+                <CarouselNext />
+            </Carousel>
         </Box>
     );
 }
