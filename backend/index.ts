@@ -11,6 +11,7 @@ import corsMiddleware from "./middleware/corsMiddleware";
 import getDatabase from "./databaseHelpers/general/getDatabase";
 import getProjects from "./databaseHelpers/projects/getProjects";
 import getExperiences from "./databaseHelpers/experiences/getExperiences";
+import getSkills from "./databaseHelpers/skills/getSkills";
 
 dotenv.config();
 
@@ -55,6 +56,20 @@ router.get(
     async function (req: Request, res: Response): Promise<void> {
         try {
             const data = await getExperiences();
+            res.send(data);
+        } catch {
+            res.status(500).send({
+                message: "Internal Server Error",
+            });
+        }
+    }
+);
+
+router.get(
+    "/skills",
+    async function (req: Request, res: Response): Promise<void> {
+        try {
+            const data = await getSkills();
             res.send(data);
         } catch {
             res.status(500).send({
