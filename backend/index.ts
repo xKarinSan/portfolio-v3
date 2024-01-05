@@ -6,6 +6,7 @@ import express, { Application, Router, Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import corsMiddleware from "./middleware/corsMiddleware";
+import serverless from 'serverless-http';
 
 // =========== notion related ===========
 import getDatabase from "./databaseHelpers/general/getDatabase";
@@ -82,3 +83,6 @@ router.get(
 app.listen(port, () => {
     console.log(`Server Running here 👉 http://localhost:${port}`);
 });
+
+
+export const handler = serverless(app);

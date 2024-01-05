@@ -1,0 +1,11 @@
+service: portfolio-backend-v3
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-southeast-1
+functions:
+  app:
+    handler: dist/index.handler
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}

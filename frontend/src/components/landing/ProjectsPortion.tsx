@@ -14,9 +14,11 @@ import Project from "../../types/ProjectType";
 export default function ProjectsPortion() {
     const [projects, setProjects] = useState<Project[]>([]);
     useEffect(() => {
-        axios.get("http://localhost:3000/projects").then((res) => {
-            setProjects(res.data);
-        });
+        axios
+            .get(import.meta.env.VITE_API_LINK + "projects")
+            .then((res) => {
+                setProjects(res.data);
+            });
     }, []);
     return (
         <Box margin="auto" width={["80%"]}>

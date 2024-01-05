@@ -6,7 +6,7 @@ import Skillset from "@/types/SkillsetType";
 export default function SkillSetPortion() {
     const [skillsets, setSkillsets] = useState<Skillset[]>([]);
     useEffect(() => {
-        axios.get("http://localhost:3000/skills").then((res) => {
+        axios.get(import.meta.env.VITE_API_LINK + "skills").then((res) => {
             setSkillsets(res.data);
         });
     }, []);

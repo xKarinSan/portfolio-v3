@@ -6,9 +6,11 @@ import Experience from "@/types/ExperienceType";
 export default function ExperiencePortion() {
     const [experiences, setExperiences] = useState<Experience[]>([]);
     useEffect(() => {
-        axios.get("http://localhost:3000/experiences").then((res) => {
-            setExperiences(res.data);
-        });
+        axios
+            .get(import.meta.env.VITE_API_LINK + "experiences")
+            .then((res) => {
+                setExperiences(res.data);
+            });
     }, []);
     return (
         <Box margin="auto" width={["80%", "60%", "40%"]}>
