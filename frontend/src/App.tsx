@@ -5,6 +5,7 @@ import AboutMePortion from "./components/landing/AboutMePortion";
 import SkillSetPortion from "./components/landing/SkillsetPortion";
 import ProjectsPortion from "./components/landing/ProjectsPortion";
 import ContactMePortion from "./components/landing/ContactMePortion";
+import ExperiencePortion from "./components/landing/ExperiencePortion";
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
             <AboutMePortion />
             <SkillSetPortion />
             <ProjectsPortion />
+            <ExperiencePortion />
             <ContactMePortion />
         </>
     );

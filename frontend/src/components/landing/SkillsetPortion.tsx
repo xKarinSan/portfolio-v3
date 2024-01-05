@@ -11,7 +11,6 @@ export default function SkillSetPortion() {
     return (
         <Card
             id="cardd"
-            // height="50vh"
             transform={"translate(0,-50px)"}
             padding="10px"
             margin="20px auto"
