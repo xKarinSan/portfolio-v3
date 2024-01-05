@@ -1,7 +1,8 @@
 import { Card, Heading, Badge, Text } from "@chakra-ui/react";
 import { useState } from "react";
-
-export default function ProjectCard({ project }: { project: any }) {
+import Project from "@/types/ProjectType";
+import MultiSelectTag from "@/types/MultiSelectTag";
+export default function ProjectCard({ project }: { project: Project }) {
     const {
         name,
         imageUrl,
@@ -17,7 +18,6 @@ export default function ProjectCard({ project }: { project: any }) {
         <Card
             color="black"
             height={["350px", null, "400px", "500px"]}
-            // width={["60%", null, "40%"]}
             width={["80%"]}
             margin="20px auto"
             backgroundImage={`url(${flipped ? "" : imageUrl})`}
@@ -34,7 +34,7 @@ export default function ProjectCard({ project }: { project: any }) {
                 <>
                     <Heading fontWeight={"normal"} fontSize={"24px"}>
                         {name} ({year})
-                        {projectType.map((type: any) => {
+                        {projectType.map((type: MultiSelectTag) => {
                             const { name } = type;
                             return (
                                 <Badge
@@ -67,7 +67,7 @@ export default function ProjectCard({ project }: { project: any }) {
                     >
                         Tech Stacks
                     </Heading>
-                    {techStacks.map((tech: any) => {
+                    {techStacks.map((tech: MultiSelectTag) => {
                         const { name } = tech;
                         return (
                             <Badge

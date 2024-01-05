@@ -1,24 +1,24 @@
 import { Box, Card, Heading, Text } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Experience from "@/types/ExperienceType";
 
 export default function ExperiencePortion() {
-    const [experiences, setExperiences] = useState([]);
+    const [experiences, setExperiences] = useState<Experience[]>([]);
     useEffect(() => {
         axios.get("http://localhost:3000/experiences").then((res) => {
-            console.log("res.data", res.data);
             setExperiences(res.data);
         });
     }, []);
     return (
-        <Box margin="auto" width={["80%","60%","40%"]}>
+        <Box margin="auto" width={["80%", "60%", "40%"]}>
             <Heading fontSize={28}>My Experiences</Heading>
             <Text>Here are the roles I have taken up so far.</Text>
             {experiences
-                .sort((a, b) => {
+                .sort((a: Experience, b: Experience) => {
                     return Date.parse(b.startDate) - Date.parse(a.startDate);
                 })
-                .map((experience: any) => {
+                .map((experience: Experience) => {
                     const {
                         roleName,
                         companyName,

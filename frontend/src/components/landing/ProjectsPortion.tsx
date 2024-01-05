@@ -9,9 +9,10 @@ import {
 } from "../ui/carousel";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Project from "../../types/ProjectType";
 
 export default function ProjectsPortion() {
-    const [projects, setProjects] = useState([]);
+    const [projects, setProjects] = useState<Project[]>([]);
     useEffect(() => {
         axios.get("http://localhost:3000/projects").then((res) => {
             setProjects(res.data);
@@ -29,7 +30,7 @@ export default function ProjectsPortion() {
                     <>
                         {projects
                             .filter((project) => project.toFeature)
-                            .map((project) => {
+                            .map((project: Project) => {
                                 return (
                                     <CarouselItem>
                                         <ProjectCard
