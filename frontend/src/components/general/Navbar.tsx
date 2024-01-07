@@ -3,12 +3,10 @@ import {
     MenubarContent,
     MenubarItem,
     MenubarMenu,
-    MenubarSeparator,
     MenubarTrigger,
 } from "@/components/ui/menubar";
 import RefTagType from "@/types/RefTagType";
 import { RowsIcon } from "@radix-ui/react-icons";
-
 import { Link, Box } from "@chakra-ui/react";
 export default function Navbar({ refSet }: { refSet: RefTagType[] }) {
     return (
@@ -32,11 +30,13 @@ export default function Navbar({ refSet }: { refSet: RefTagType[] }) {
                                 <MenubarItem>
                                     <Link
                                         onClick={() => {
-                                            refInstance?.current.scrollIntoView(
-                                                {
-                                                    behavior: "smooth",
-                                                }
-                                            );
+                                            if (refInstance.current != null) {
+                                                refInstance.current.scrollIntoView(
+                                                    {
+                                                        behavior: "smooth",
+                                                    }
+                                                );
+                                            }
                                         }}
                                     >
                                         {refName}

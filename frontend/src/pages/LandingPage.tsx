@@ -5,7 +5,7 @@ import SkillSetPortion from "@/components/landing/SkillsetPortion";
 import ProjectsPortion from "@/components/landing/ProjectsPortion";
 import ContactMePortion from "@/components/landing/ContactMePortion";
 import ExperiencePortion from "@/components/landing/ExperiencePortion";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Box } from "@chakra-ui/react";
 import RefTagType from "@/types/RefTagType";
 
