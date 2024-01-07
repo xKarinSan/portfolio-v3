@@ -2,12 +2,9 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 import ProjectCard from "./cards/ProjectCard";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
-import { useEffect, useState } from "react";
-import axios from "axios";
 import Project from "../../types/ProjectType";
 
-export default function ProjectsPortion() {
+export default function ProjectsPortion({ projects }: { projects: Project[] }) {
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -27,23 +24,14 @@ export default function ProjectsPortion() {
             items: 1,
         },
     };
-
-    const [projects, setProjects] = useState<Project[]>([]);
-    useEffect(() => {
-        axios.get(import.meta.env.VITE_API_LINK + "projects").then((res) => {
-            setProjects(res.data);
-        });
-    }, []);
     return (
         <Box margin="auto" width={["80%"]}>
             <Heading fontSize={28}>My Projects</Heading>
-            <Text>
-                Here are some projects I’ve worked on.
-            </Text>
+            <Text>Here are some projects I’ve worked on.</Text>
             {/* <Carousel slide={2} show={3} transition={0.5}> */}
             <Carousel responsive={responsive}>
                 {projects
-                    .filter((project) => project.toFeature)
+                    ?.filter((project) => project.toFeature)
                     .map((project: Project) => {
                         return (
                             <ProjectCard key={project.id} project={project} />

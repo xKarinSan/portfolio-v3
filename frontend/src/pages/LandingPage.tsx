@@ -5,10 +5,13 @@ import SkillSetPortion from "@/components/landing/SkillsetPortion";
 import ProjectsPortion from "@/components/landing/ProjectsPortion";
 import ContactMePortion from "@/components/landing/ContactMePortion";
 import ExperiencePortion from "@/components/landing/ExperiencePortion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Box } from "@chakra-ui/react";
 import RefTagType from "@/types/RefTagType";
-
+import Experience from "@/types/ExperienceType";
+import Project from "@/types/ProjectType";
+import Skillset from "@/types/SkillsetType";
+import axios from "axios";
 export default function LandingPage() {
     const homeRef = useRef(null);
     const aboutMeRef = useRef(null);
@@ -26,34 +29,60 @@ export default function LandingPage() {
         { refName: "Contact Me", refInstance: contactMeRef },
     ];
 
+    const [loading, setLoading] = useState<boolean>(true);
+
+    const [experiences, setExperiences] = useState<Experience[]>([]);
+    const [projects, setProjects] = useState<Project[]>([]);
+    const [skillsets, setSkillsets] = useState<Skillset[]>([]);
+    useEffect(() => {
+        axios.get(import.meta.env.VITE_API_LINK + "landing").then((res) => {
+            const {
+                experiences: retrievedExperiences,
+                projects: retrievedProjects,
+                skills: retrievedSkillsets,
+            } = res.data;
+            setExperiences(retrievedExperiences);
+            setProjects(retrievedProjects);
+            setSkillsets(retrievedSkillsets);
+            setLoading(false);
+            // setExperiences(res.data);
+        });
+    }, []);
+
     return (
         <>
-            <Navbar refSet={refSet} />
-            <Box top={50} position="relative">
-                <Box ref={homeRef}>
-                    <HeroPortion />
-                </Box>
+            {loading ? (
+                <div>Loading...</div>
+            ) : (
+                <>
+                    <Navbar refSet={refSet} />
+                    <Box top={50} position="relative">
+                        <Box ref={homeRef}>
+                            <HeroPortion />
+                        </Box>
 
-                <Box ref={aboutMeRef}>
-                    <AboutMePortion />
-                </Box>
+                        <Box ref={aboutMeRef}>
+                            <AboutMePortion />
+                        </Box>
 
-                <Box ref={skillSetRef}>
-                    <SkillSetPortion />
-                </Box>
+                        <Box ref={skillSetRef}>
+                            <SkillSetPortion skillsets={skillsets} />
+                        </Box>
 
-                <Box ref={projectsRef}>
-                    <ProjectsPortion />
-                </Box>
+                        <Box ref={projectsRef}>
+                            <ProjectsPortion projects={projects} />
+                        </Box>
 
-                <Box ref={experienceRef}>
-                    <ExperiencePortion />
-                </Box>
+                        <Box ref={experienceRef}>
+                            <ExperiencePortion experiences={experiences} />
+                        </Box>
 
-                <Box ref={contactMeRef}>
-                    <ContactMePortion />
-                </Box>
-            </Box>
+                        <Box ref={contactMeRef}>
+                            <ContactMePortion />
+                        </Box>
+                    </Box>
+                </>
+            )}
         </>
     );
 }

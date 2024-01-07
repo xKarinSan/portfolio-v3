@@ -6,7 +6,7 @@ import express, { Application, Router, Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import corsMiddleware from "./middleware/corsMiddleware";
-import serverless from 'serverless-http';
+import serverless from "serverless-http";
 
 // =========== notion related ===========
 import getDatabase from "./databaseHelpers/general/getDatabase";
@@ -80,9 +80,29 @@ router.get(
     }
 );
 
+router.get(
+    "/landing",
+    async function (req: Request, res: Response): Promise<void> {
+        try {
+            const allPromises: Promise<any>[] = [
+                getProjects(),
+                getExperiences(),
+                getSkills(),
+            ];
+            Promise.all(allPromises).then((values) => {
+                const [projects, experiences, skills] = values;
+                res.send({ projects, experiences, skills });
+            });
+        } catch {
+            res.status(500).send({
+                message: "Internal Server Error",
+            });
+        }
+    }
+);
+
 app.listen(port, () => {
     console.log(`Server Running here 👉 http://localhost:${port}`);
 });
-
 
 export const handler = serverless(app);
