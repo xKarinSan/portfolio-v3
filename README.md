@@ -1,6 +1,9 @@
 # 💼 Portfolio Site (2024 Version)
 This is the 2024 version of my portfolio site which I used ReactJS, Vite and ExpressJS (Typescript) to build, while experimenting on the NotionAPI to fetch data. Not only that, but this entire site is deployed on AWS.
 
+## 🧋 Live site
+Here is the live site: https://main.d2qk8t3rk24w2z.amplifyapp.com/ 
+
 ## ❓ Why did I use Notion Database instead of other databases?
 This is because you can access your notion databases through your Notion app (thus removing the need of building an admin interface from scratch). This would allow you to maintain your skills, projects and contents more easily.
 
