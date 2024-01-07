@@ -7,7 +7,7 @@ export default function HeroPortion() {
             <Heading variant="h2" fontWeight={"bold"} margin="10px">
                 Software Engineer
             </Heading>
-            <Text margin="20px">
+            <Text margin="20px" fontSize={25} fontWeight="light">
                 I deliver fully functioning applications and am very passionate
                 in my craft.
             </Text>

@@ -32,15 +32,15 @@ export default function ContactMePortion() {
                 <Heading variant="h2" fontWeight={"normal"} margin="10px">
                     Contact Me
                 </Heading>
-                <Text marginTop={5} fontWeight="light">
+                <Text marginTop={5} fontWeight="light" fontSize={[18,null,25]}>
                     Improving, learning and living a step a day.{" "}
                 </Text>
-                <HStack margin="10px auto" justifyContent={"center"}>
+                <HStack margin="20px auto" justifyContent={"center"}>
                     {ContactLinks.map((contactLink) => {
                         const { icon: CurrentIcon, link } = contactLink;
                         return (
                             <Link href={link} target="_blank">
-                                <CurrentIcon></CurrentIcon>
+                                <CurrentIcon fontSize={25}></CurrentIcon>
                             </Link>
                         );
                     })}

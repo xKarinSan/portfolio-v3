@@ -12,7 +12,7 @@ export default function AboutMePortion() {
                 <Heading marginBottom="10px" fontSize={28} fontWeight={"normal"}>
                     Hiya, I’m Siang Meng. Nice meeting you.
                 </Heading>
-                <Text >
+                <Text fontSize={[16,null,20]}>
                     Since my schooling days, I have developed a strong passion
                     for tech. As a result, I have self-learnt various
                     programming languages. This has exposed me to full-stack

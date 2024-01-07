@@ -9,7 +9,7 @@ export default function ExperiencePortion({
     return (
         <Box margin="auto" width={["80%", "60%", "40%"]}>
             <Heading fontSize={28}>My Experiences</Heading>
-            <Text>Here are the roles I have taken up so far.</Text>
+            <Text fontSize={[18,null,25]} fontWeight="light" >Here are the roles I have taken up so far.</Text>
             {experiences
                 ?.sort((a: Experience, b: Experience) => {
                     return Date.parse(b.startDate) - Date.parse(a.startDate);

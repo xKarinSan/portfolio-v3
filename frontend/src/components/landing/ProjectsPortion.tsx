@@ -27,8 +27,7 @@ export default function ProjectsPortion({ projects }: { projects: Project[] }) {
     return (
         <Box margin="auto" width={["80%"]}>
             <Heading fontSize={28}>My Projects</Heading>
-            <Text>Here are some projects I’ve worked on.</Text>
-            {/* <Carousel slide={2} show={3} transition={0.5}> */}
+            <Text fontSize={[18,null,25]} fontWeight="light">Here are some projects I’ve worked on.</Text>
             <Carousel responsive={responsive}>
                 {projects
                     ?.filter((project) => project.toFeature)
