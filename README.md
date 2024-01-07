@@ -8,7 +8,9 @@ Here is the live site: https://main.d2qk8t3rk24w2z.amplifyapp.com/
 This is because you can access your notion databases through your Notion app (thus removing the need of building an admin interface from scratch). This would allow you to maintain your skills, projects and contents more easily.
 
 ## 🏗 Architecture Diagram 
-Work in progress
+<img width="738" alt="image" src="https://github.com/xKarinSan/portfolio-v3/assets/47315402/b0ecca0e-a73a-41f3-9652-1a5848572909">
+
+
 
 ## 🤖 Tech Stacks
 <p align="left">
