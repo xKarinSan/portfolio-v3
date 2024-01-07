@@ -6,7 +6,7 @@ import ProjectsPortion from "@/components/landing/ProjectsPortion";
 import ContactMePortion from "@/components/landing/ContactMePortion";
 import ExperiencePortion from "@/components/landing/ExperiencePortion";
 import { useRef, useEffect, useState } from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Card, Progress, Heading } from "@chakra-ui/react";
 import RefTagType from "@/types/RefTagType";
 import Experience from "@/types/ExperienceType";
 import Project from "@/types/ProjectType";
@@ -45,14 +45,25 @@ export default function LandingPage() {
             setProjects(retrievedProjects);
             setSkillsets(retrievedSkillsets);
             setLoading(false);
-            // setExperiences(res.data);
         });
     }, []);
 
     return (
         <>
             {loading ? (
-                <div>Loading...</div>
+                <Card
+                    padding={25}
+                    margin={"15px auto"}
+                    width={["80%", null, "60%"]}
+                >
+                    <Heading fontWeight={"normal"} margin="10px">Loading...</Heading>
+                    <Progress
+                        size="xs"
+                        isIndeterminate
+                        colorScheme="red"
+                        margin="10px"
+                    />
+                </Card>
             ) : (
                 <>
                     <Navbar refSet={refSet} />
