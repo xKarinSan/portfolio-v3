@@ -17,7 +17,7 @@ export default function ProjectCard({ project }: { project: Project }) {
     return (
         <Card
             color="black"
-            height={["350px", null, "400px", "500px"]}
+            minHeight={["350px", null, "400px", "500px"]}
             width={["80%"]}
             margin="20px auto"
             backgroundImage={`url(${flipped ? "" : imageUrl})`}

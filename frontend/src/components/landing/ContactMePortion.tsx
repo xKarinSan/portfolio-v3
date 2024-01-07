@@ -7,6 +7,7 @@ export default function ContactMePortion() {
                 color="white"
                 padding="20px"
                 paddingBottom="60px"
+                id="contactMe"
             >
                 <Heading variant="h2" fontWeight={"bold"} margin="10px">
                     Contact Me

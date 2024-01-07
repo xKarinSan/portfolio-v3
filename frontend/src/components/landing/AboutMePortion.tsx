@@ -6,7 +6,8 @@ export default function AboutMePortion() {
             color="white"
             padding="20px"
             paddingBottom="60px"
-            height="40vh"
+            // height="40vh"
+            id="aboutMe"
         >
             <Box width={["80%", null, "40%"]} margin="auto">
                 <Heading marginBottom="10px" fontSize={28} fontWeight={"normal"}>

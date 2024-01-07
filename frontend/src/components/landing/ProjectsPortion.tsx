@@ -31,7 +31,6 @@ export default function ProjectsPortion() {
     const [projects, setProjects] = useState<Project[]>([]);
     useEffect(() => {
         axios.get(import.meta.env.VITE_API_LINK + "projects").then((res) => {
-            console.log("projects", res.data);
             setProjects(res.data);
         });
     }, []);
@@ -39,7 +38,7 @@ export default function ProjectsPortion() {
         <Box margin="auto" width={["80%"]}>
             <Heading fontSize={28}>My Projects</Heading>
             <Text>
-                Here are the projects I’ve worked on. Click here to see more
+                Here are some projects I’ve worked on.
             </Text>
             {/* <Carousel slide={2} show={3} transition={0.5}> */}
             <Carousel responsive={responsive}>
